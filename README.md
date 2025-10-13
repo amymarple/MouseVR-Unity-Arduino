@@ -9,7 +9,9 @@ A complete Virtual Reality system for rodent behavioral experiments, integrating
 
 ## 🎯 Project Overview
 
-This project implements a full VR environment for behavioral neuroscience research, where a mouse on a trackball can navigate virtual environments. The system features:
+This project implements a traditional VR environment for behavioral neuroscience research, where a mouse on a trackball can navigate virtual environments. This approach is based on the pioneering trackball-based VR method described by Harvey et al. (2009), and was used as a comparison system in recent head-mounted VR headset research published in ***Nature Methods*** (Isaacson, **Chang**, Berkowitz et al., 2025 - [MouseGoggles](https://github.com/sn-lab/MouseGoggles)).
+
+The system features:
 
 - **Real-time motion tracking** using dual ADNS3080 optical flow sensors
 - **Bidirectional Arduino-Unity communication** via serial protocol
@@ -274,6 +276,17 @@ This is a portfolio showcase project, but suggestions and improvements are welco
 ## 📄 License
 
 This project is provided as-is for educational and research purposes. When using this code in academic work, please cite appropriately.
+
+## 📚 References
+
+This traditional trackball-based VR system implements methods based on:
+
+1. **Harvey, C. D., Collman, F., Dombeck, D. A., & Tank, D. W.** (2009). Intracellular dynamics of hippocampal place cells during virtual navigation. *Nature, 461*(7266), 941-946. https://doi.org/10.1038/nature08499
+
+This code was used in comparative analysis with head-mounted VR systems in:
+
+2. **Isaacson, M., Chang, H., Berkowitz, L., Huang, Z.-J., Murphy, G. G., & Dombeck, D. A.** (2025). MouseGoggles: an immersive virtual reality headset for mouse neuroscience and behavior. *Nature Methods, 22*, 380-385. https://doi.org/10.1038/s41592-024-02540-y  
+   - **GitHub Repository**: [MouseGoggles](https://github.com/sn-lab/MouseGoggles)
 
 ## 📧 Contact
 
