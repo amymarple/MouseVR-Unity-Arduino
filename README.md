@@ -19,6 +19,16 @@ The system features:
 - **Comprehensive event logging** for experimental data analysis
 - **Customizable VR environments** with trigger zones and stimulus presentation
 
+### Projector-Based VR Setup
+
+![Projector VR Setup](Documentation/images/projectorVR3.png)
+
+*Traditional projector-based VR system with trackball for mouse navigation*
+
+![Mouse in VR Setup](Documentation/images/real_mouse_example.png)
+
+*Mouse navigating in the virtual environment. All animal procedures complied with relevant ethical regulations and were performed after approval by the Institutional Animal Care and Use Committee of Cornell University (protocol number 2015-0029).*
+
 ### System Architecture
 
 ```
