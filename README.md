@@ -291,8 +291,13 @@ This code was used in comparative analysis with head-mounted VR systems in:
 ## 📧 Contact
 
 **Hongyu Chang**  
-hc997@cornell.edu
+Department of Neurobiology & Behavior, Cornell University  
+hc997@cornell.edu  
 [LinkedIn](www.linkedin.com/in/hongyu-chang-925987113)
+
+**Ian Ellwood, PhD** (Principal Investigator)  
+Department of Neurobiology & Behavior, Cornell University  
+ite2@cornell.edu
 
 ---
 
