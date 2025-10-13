@@ -277,9 +277,9 @@ This project is provided as-is for educational and research purposes. When using
 
 ## 📧 Contact
 
-**[Your Name]**  
-[Your Email/Website]  
-[LinkedIn/GitHub Profile]
+**Hongyu Chang**  
+hc997@cornell.edu
+[LinkedIn](www.linkedin.com/in/hongyu-chang-925987113)
 
 ---
 
