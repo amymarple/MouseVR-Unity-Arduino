@@ -1,0 +1,90 @@
+﻿#pragma kernel ConeProjection
+
+RWTexture2D<float4> Result;
+
+int x_resolution;
+int y_resolution;
+
+float3 X;
+float3 U;
+float3 V;
+float3 F;
+float beta;
+
+float cone_rescale;
+
+float tan_alpha;
+float3 Z;
+
+
+[numthreads(16,16,1)]
+void ConeProjection(uint3 id : SV_DispatchThreadID)
+{
+	float s = (float) x_resolution;
+	float t = (float) y_resolution;
+
+	float r =  1.7777777;
+
+	float v = id.y/t;
+	float u = id.x/s;
+
+	float3 Y = beta*(r*(u - 0.5) * U + (v - 0.5) * V) + F;
+
+	float tan_alpha_2 = tan_alpha * tan_alpha;
+
+	float c = X.x*X.x + X.y*X.y - X.z*X.z*tan_alpha_2;
+	float b = 2 * (X.x*Y.x + X.y*Y.y - tan_alpha_2 * X.z*Y.z);
+	float a = Y.x*Y.x + Y.y*Y.y - tan_alpha_2 * Y.z*Y.z;
+
+	float discriminant = b*b - 4*a*c;
+
+
+	if (discriminant < 0) {
+		Result[id.xy] = float4(0, 0, 0, 0);
+	}
+	else {
+		float l_m = (-b - sqrt(discriminant)) / (2 * a);
+		float l_p = (-b + sqrt(discriminant)) / (2 * a);
+
+		float3 p_1 = X + l_m * Y;
+		float3 p_2 = X + l_p * Y;
+
+		float h_1 = p_1.z;
+		float h_2 = p_2.z;
+
+		
+		if ((h_1 > 0 | l_m <= 0) & (h_2 > 0 | l_p <= 0)) {
+			Result[id.xy] = float4(0, 0, 0, 0);
+
+		}
+		else {
+			float l = 0;
+			if (h_1 < 0 & l_m > 0) {
+				l = l_m;
+			} else {
+				l = l_p;
+			}
+
+
+			float3 pt_on_cone = X + l * Y;
+			float3 x = normalize(pt_on_cone);
+			float3 n = normalize(float3(pt_on_cone.x, pt_on_cone.y, 0));
+			n = n - dot(n, x) * x;
+
+			float3 y = normalize(Y);
+
+			float cos_angle = dot(n, -y);
+
+			float f = exp(cone_rescale / 100.0);
+
+			Result[id.xy] = float4(pt_on_cone.x* f, pt_on_cone.y* f, pt_on_cone.z* f, cos_angle);
+
+			//Result[id.xy] = float3(1, 0, -5);
+			
+			//Result[id.xy] = normalize(pt_on_cone - Z);
+		}
+
+
+		
+	}
+}

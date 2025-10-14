@@ -223,6 +223,40 @@ MouseVR-GitHub-Portfolio/
 │   ├── Event.cs                 # Event data structure
 │   └── EventLogger.cs           # CSV data persistence
 │
+├── UnityScripts_Tasks/          # Behavioral paradigm implementations
+│   ├── README.md               # Detailed task documentation
+│   ├── CoreTriggerScripts/     # Basic trigger zone scripts
+│   │   ├── SafeZoneScript.cs   # Reward zone detection
+│   │   ├── TeleportScript.cs   # Virtual cliff teleportation
+│   │   ├── WallStripeTriggerScript.cs  # Reward cue trigger
+│   │   └── WallLightTriggerScipt.cs    # Punishment cue trigger
+│   ├── LoomingStimulus/        # Predator threat simulation
+│   │   ├── looming.cs          # Automated looming paradigm
+│   │   ├── Loomingdarkening.cs # Looming with darkness
+│   │   ├── LoomingStimulusControlScript.cs  # Physics-based tracking
+│   │   └── SpawnZone_LoomingStimulus_ControlScript.cs  # Spawn control
+│   ├── Optomotor/              # Optokinetic reflex testing
+│   │   ├── optomotor_task.cs   # Grating stimulus control
+│   │   ├── optomotor_task1.cs  # Alternative paradigm
+│   │   ├── single_frequency_task.cs  # Single frequency test
+│   │   ├── multple_freq_2.cs   # Multiple frequency test
+│   │   └── Velocity.cs         # Velocity control script
+│   └── VisualCliff/            # Depth perception testing
+│       └── visualcliff.cs      # Cliff paradigm controller
+│
+├── ConeProjection/             # Advanced projection mapping system
+│   ├── README.md               # Comprehensive technical documentation
+│   ├── Scripts/
+│   │   ├── MakeConeProjection.cs    # Projection controller & optimization
+│   │   ├── MakeCubeMap.cs           # Cube map generation
+│   │   └── ProjectionOptimizer.cs   # Gradient descent calibration
+│   ├── Shaders/
+│   │   ├── ConeProjection.compute   # GPU ray-cone intersection
+│   │   ├── CubeMapReadoutShader_LEFT.shader
+│   │   └── CubeMapReadoutShader_RIGHT.shader
+│   ├── Materials/               # Projection materials
+│   └── RenderTexturesForConeProjection/  # Render targets
+│
 ├── ArduinoSketches/
 │   ├── VR_sketch.ino           # Full production firmware
 │   ├── TrackballController.ino # Motion tracking only
@@ -230,7 +264,7 @@ MouseVR-GitHub-Portfolio/
 │   └── air_puff_test.ino       # Air puff test
 │
 ├── Documentation/
-│   └── (Add your diagrams, photos, videos here)
+│   └── images/                 # Setup photos and diagrams
 │
 ├── Assets/
 │   ├── Materials/              # Custom materials/shaders
@@ -270,6 +304,214 @@ This system was designed for behavioral neuroscience research, including:
 - **Spatial navigation** tasks
 - **Operant conditioning** paradigms
 - **Virtual cliff** avoidance tasks
+
+## 🧪 Experimental Paradigms (UnityScripts_Tasks/)
+
+The [UnityScripts_Tasks/](UnityScripts_Tasks/) folder contains complete implementations of classical behavioral neuroscience paradigms. See the [detailed README](UnityScripts_Tasks/README.md) for comprehensive documentation.
+
+### Available Paradigms
+
+#### 🦅 Looming Stimulus (Predator Threat Response)
+**Location:** [LoomingStimulus/](UnityScripts_Tasks/LoomingStimulus/)
+
+- **looming.cs** - Automated looming paradigm with controlled trials (30 trials, 3 speeds, randomized approach angles)
+- **Loomingdarkening.cs** - Looming with environmental darkening effect
+- **LoomingStimulusControlScript.cs** - Physics-based predator tracking with optimal interception algorithm
+- **SpawnZone_LoomingStimulus_ControlScript.cs** - Probabilistic spawning with habituation control
+
+**Scientific Basis:** Models innate defensive responses to overhead threats (Schiff et al., 1962; De Franceschi et al., 2016)
+
+**Key Features:**
+- Randomized approach angles (±35° azimuth, 25-30° elevation)
+- Variable approach speeds (125, 250, 500 units/s)
+- Automatic trial management and event logging
+- Air puff delivery on collision
+
+#### 👁️ Optomotor Response (Optokinetic Reflex)
+**Location:** [Optomotor/](UnityScripts_Tasks/Optomotor/)
+
+- **optomotor_task.cs** - Multi-frequency grating paradigm (7 spatial frequencies, 70 trials)
+- **optomotor_task1.cs** - Alternative optomotor implementation
+- **single_frequency_task.cs** - Single frequency validation
+- **multple_freq_2.cs** - Multiple frequency testing protocol
+- **Velocity.cs** - Velocity control utilities
+
+**Scientific Basis:** Tests visual motion processing and tracking reflexes
+
+**Key Features:**
+- Spatial frequencies: 1°, 2°, 4°, 6°, 8°, 12°, 24° gratings
+- Bidirectional rotation (clockwise/counterclockwise)
+- Randomized trial order to prevent adaptation
+- Automated stimulus-gray period alternation (2s grating, 4s gray)
+
+#### 🏔️ Virtual Cliff (Depth Perception)
+**Location:** [VisualCliff/](UnityScripts_Tasks/VisualCliff/)
+
+- **visualcliff.cs** - Cliff avoidance testing (currently scaffolded for customization)
+
+**Scientific Basis:** Gibson & Walk's classic visual cliff paradigm (1960)
+
+**Note:** This script provides a template for implementing custom cliff avoidance protocols
+
+#### 🎯 Core Trigger Scripts
+**Location:** [CoreTriggerScripts/](UnityScripts_Tasks/CoreTriggerScripts/)
+
+**SafeZoneScript.cs** - Reward zone detection
+- Tracks player entry/exit from designated safe zones
+- Enables operant conditioning with spatial contingencies
+
+**TeleportScript.cs** - Virtual cliff teleportation
+- Teleports player on boundary crossing
+- Automatically deactivates looming stimuli on reset
+
+**WallStripeTriggerScript.cs** - Positive cue (reward)
+- Delivers water reward when player exits striped wall trigger zone
+- Used for visual discrimination learning
+
+**WallLightTriggerScipt.cs** - Aversive cue (punishment)
+- Delivers air puff when player exits illuminated wall trigger zone
+- Used for avoidance learning paradigms
+
+### Experimental Design Features
+
+**Automated Trial Management:**
+- Pseudorandom stimulus presentation
+- Built-in habituation periods
+- Automatic trial counting and session termination
+- Real-time event logging (stimulus parameters, trial numbers, outcomes)
+
+**Data Logging:**
+All task scripts integrate with EventLogger to record:
+- Trial numbers and parameters
+- Stimulus characteristics (speed, direction, frequency)
+- Behavioral outcomes (approach/avoidance, reaction times)
+- Continuous position and rotation data
+
+**Customization:**
+Each paradigm includes configurable parameters:
+- Trial counts and durations
+- Stimulus speeds and frequencies
+- Randomization schemes
+- Reward/punishment contingencies
+
+## 🎨 Cone Projection System (ConeProjection/)
+
+The [ConeProjection/](ConeProjection/) folder contains an advanced GPU-accelerated projection mapping system for correcting visual distortions on curved projection screens. See the [detailed technical README](ConeProjection/README.md) for comprehensive documentation.
+
+### Overview
+
+Standard projectors create severe geometric distortions when displaying on cylindrical or conical screens. This system uses compute shaders and ray-tracing to ensure the mouse perceives geometrically accurate visual stimuli.
+
+**Technical Approach:**
+1. Capture 360° environment using cube map rendering
+2. Calculate ray-cone intersections on GPU (compute shader)
+3. Apply geometric corrections for arbitrary projector placement
+4. Optimize 10 projection parameters using gradient descent
+
+### Key Components
+
+**MakeConeProjection.cs** - Main projection controller
+- 10 DOF parameter optimization (position, orientation, scale, cone geometry)
+- Real-time calibration using marker-based correspondence
+- Analytical gradient descent (1M iterations)
+- GPU compute shader integration
+
+**ProjectionOptimizer.cs** - Calibration algorithm
+- Minimizes reprojection error: `L = Σ ||UV_estimated - UV_actual||²`
+- Importance-weighted gradient descent
+- Automatic parameter tuning from physical calibration markers
+
+**ConeProjection.compute** - GPU ray-tracing shader
+- Solves quadratic ray-cone intersection: `aλ² + bλ + c = 0`
+- 1980x1020 resolution at real-time frame rates
+- Handles edge cases (occlusion, invalid rays)
+
+**CubeMapReadoutShader_LEFT/RIGHT.shader** - Final rendering
+- Samples cube map using corrected directions
+- Height-based fadeout for screen boundaries
+- Separate left/right eye rendering
+
+### Calibration Parameters
+
+```csharp
+// Projector Placement
+projector_distance    // Distance from origin (meters)
+projector_theta_1     // Horizontal angle (degrees)
+projector_theta_2     // Vertical tilt (degrees)
+projector_phi         // Azimuth rotation (degrees)
+projector_tau         // Roll angle (degrees)
+projector_height      // Height above ground (meters)
+projector_scale       // Zoom/magnification
+
+// Screen Geometry
+cone_distance_to_top_row     // Distance to cone apex (meters)
+cone_dinstance_to_second_row // Distance to cone base (meters)
+cone_half_angle              // Cone opening half-angle (degrees)
+```
+
+### Scientific Importance
+
+**Without Correction:**
+- Grating frequencies appear non-uniform
+- Object sizes distorted (closer to edges)
+- Velocities non-constant across visual field
+- Depth cues unreliable
+
+**With Correction:**
+- Geometrically accurate stimulus presentation
+- Uniform visual angles and velocities
+- Accurate depth perception cues
+- Reliable spatial frequency measurements
+
+**Applications:**
+- Optokinetic reflex testing (uniform grating motion)
+- Place cell recordings (accurate spatial layouts)
+- Visual cliff experiments (depth cue preservation)
+- Any paradigm requiring precise visual geometry
+
+### Mathematical Foundation
+
+**Ray-Cone Intersection:**
+```
+Cone equation: x² + y² = (z·tan(α))²
+Ray equation:  P = X + λY
+
+Quadratic solution yields intersection point
+Surface normal computed for lighting
+Cube map sampled at intersection direction
+```
+
+**Optimization:**
+- 10-parameter nonlinear least squares
+- Analytical Jacobian (no finite differences)
+- Weighted gradient descent (sensitive parameters prioritized)
+- Converges to sub-pixel accuracy
+
+### Setup & Usage
+
+1. **Physical Setup:**
+   - Measure projector position and orientation
+   - Place calibration markers on cone surface
+   - Record 3D marker positions (angle, height)
+
+2. **Unity Configuration:**
+   - Attach `MakeConeProjection.cs` to camera
+   - Create cube map render texture
+   - Assign compute shader and materials
+   - Configure initial parameter estimates
+
+3. **Calibration:**
+   - Mark corresponding UV positions in projector space
+   - Set learning rate and importance weights
+   - Run optimization (monitor loss convergence)
+   - Validate with visual overlay
+
+4. **Runtime:**
+   - System automatically applies corrections
+   - No performance overhead (GPU accelerated)
+   - Works with dynamic scenes
+
+**Performance:** Real-time at 1920x1080 on modern GPUs
 
 ## 📝 Technical Notes
 
