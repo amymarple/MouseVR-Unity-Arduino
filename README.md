@@ -1,5 +1,7 @@
 # Mouse VR - Unity & Arduino Integration for Behavioral Neuroscience
 
+[![Nature Methods](https://img.shields.io/badge/Nature%20Methods-22%2C%20380%E2%80%93385%20%282025%29-blue)](https://doi.org/10.1038/s41592-024-02540-y)
+
 A complete Virtual Reality system for rodent behavioral experiments, integrating Unity 3D with Arduino-controlled hardware for real-time motion tracking, reward delivery, and event logging.
 
 ![Project Status](https://img.shields.io/badge/status-active-success.svg)
