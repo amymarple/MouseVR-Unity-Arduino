@@ -9,7 +9,7 @@ A complete Virtual Reality system for rodent behavioral experiments, integrating
 
 ## 🎯 Project Overview
 
-This project implements a traditional VR environment for behavioral neuroscience research, where a mouse on a trackball can navigate virtual environments. This approach is based on the pioneering trackball-based VR method described by Harvey et al. (2009), and was used as a comparison system in recent head-mounted VR headset research published in ***Nature Methods*** (Isaacson, **Chang**, Berkowitz et al., 2025 - [MouseGoggles](https://github.com/sn-lab/MouseGoggles)).
+This project implements a traditional VR environment for behavioral neuroscience research, where a mouse on a trackball can navigate virtual environments. This approach is based on the pioneering trackball-based VR method described by Harvey et al. (2009), and was used as a comparison system in recent head-mounted VR headset research published in ***Nature Methods*** (*Isaacson, ***Chang**, et al., 2025 - [MouseGoggles](https://github.com/sn-lab/MouseGoggles)).
 
 **Note:** This repository contains the Arduino firmware and Unity scripts for the VR system. The hardware setup (including the trackball, projection screen, optical sensors, and mechanical components) follows the design principles described in Harvey et al. (2009). For detailed hardware construction and assembly instructions, please refer to the original publication.
 
